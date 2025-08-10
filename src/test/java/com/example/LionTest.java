@@ -46,7 +46,7 @@ public class LionTest {
     @Test
     public void testConstructorWithInvalidSexAndMessage() {
         try {
-            new Lion("оно", feline);
+            lion = new Lion("оно", feline);
             fail("Ожидалось исключение");
         } catch (Exception e) {
             String expectedMessage = "Используйте допустимые значения пола животного - Самец или Самка";

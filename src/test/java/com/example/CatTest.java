@@ -1,36 +1,36 @@
 package com.example;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.List;
 
 import static org.junit.Assert.*;
 
+@RunWith(MockitoJUnitRunner.class)
 public class CatTest {
 
     @Mock
-    Feline feline;
-
-    Cat cat;
+    Feline felineMock = new Feline();
 
     @Test
     public void returnNyaWhenTriggerMethod() {
-        cat = new Cat(feline);
+        Cat cat = new Cat(felineMock);
         String actual = cat.getSound();
         assertEquals("Кошки должны мяукать", "Мяу", actual);
     }
 
 
-    //я ОЧЕНЬ долго пытался, но у меня не получилось сделать тест рабочим и я не понимаю как
     @Test
     public void getFood() throws Exception {
-        cat = new Cat(feline);
-        Mockito.when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        Cat cat = new Cat(felineMock);
+        Mockito.when(felineMock.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> actual = cat.getFood();
 
-        assertEquals("Должен вывестись список еды для хищников", List.of("Животные", "Птицы", "Рыба"), actual);
+        assertEquals("Должен вернуться список еды для хищников", List.of("Животные", "Птицы", "Рыба"), actual);
 
     }
 }
