@@ -3,8 +3,6 @@ package com.example;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.List;
@@ -15,8 +13,6 @@ import static org.junit.Assert.*;
 public class FelineTest {
 
     Feline feline;
-    @Spy
-    Feline felineSpy;
 
     @Before
     public void startUp() {
@@ -31,8 +27,8 @@ public class FelineTest {
 
     @Test
     public void testReturnCountKittensNoParam() {
-        felineSpy.getKittens();
-        Mockito.verify(felineSpy, Mockito.times(1)).getKittens(1);
+        int actual = feline.getKittens();
+        assertEquals("Должно вернуться кол-во котят по умолчанию (1)", 1, actual);
     }
     /*
     @Test
